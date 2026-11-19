@@ -1,0 +1,486 @@
+/* ==========================================================
+   1. VARIABLES (brand colours + shadow)
+   ========================================================== */
+:root {
+  --bg: #f5f7f6;
+  --surface: #ffffff;
+  --text: #1d2925;
+  --muted: #62716b;
+  --primary: #426b59;
+  --primary-dark: #2d4d3f;
+  --border: #dce5df;
+  --shadow: 0 12px 30px rgba(24, 48, 36, .08);
+}
+
+/* ==========================================================
+   2. RESET & BASE
+   ========================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a {
+  color: var(--primary);
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* ==========================================================
+   3. LAYOUT HELPERS
+   ========================================================== */
+.container {
+  width: min(1100px, 88%);
+  margin-inline: auto;
+}
+
+.section,
+.page-content {
+  padding-block: 3rem 4rem;
+}
+
+.section-title {
+  margin-bottom: 1.2rem;
+}
+
+.page-content > h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin: 0 0 1.5rem;
+}
+
+.small-note {
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+/* ==========================================================
+   4. HEADER & NAVIGATION
+   ========================================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 6%;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-decoration: none;
+}
+
+.logo span,
+.hero h1 span {
+  color: var(--primary);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.navigation a:hover,
+.navigation a.active {
+  color: var(--primary);
+}
+
+/* Shared style for small UI buttons */
+.theme-button,
+.menu-toggle,
+.filter-button {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .55rem .8rem;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: none;   /* only shown on small screens */
+}
+
+/* ==========================================================
+   5. BUTTONS
+   ========================================================== */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  padding: .75rem 1.1rem;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+
+.button:hover {
+  color: white;
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--primary);
+}
+
+.button-outline:hover {
+  background: var(--primary);
+}
+
+/* ==========================================================
+   6. HOME PAGE: HERO
+   ========================================================== */
+.hero {
+  min-height: 68vh;
+  display: grid;
+  grid-template-columns: 1.3fr .7fr;
+  align-items: center;
+  gap: 3rem;
+  padding-block: 4rem;
+}
+
+.eyebrow,
+.tag {
+  color: var(--primary);
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin: .5rem 0;
+}
+
+.hero h2 {
+  font-size: 1.3rem;
+  color: var(--muted);
+}
+
+.hero-copy > p:not(.eyebrow) {
+  max-width: 620px;
+  color: var(--muted);
+}
+
+.profile-placeholder {
+  min-height: 300px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: #e1ebe4;
+  color: var(--primary-dark);
+  border: 2px dashed #9ab3a2;
+  border-radius: 24px;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   7. CARDS & CONTENT PANELS
+   ========================================================== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.card,
+.content-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.4rem;
+  box-shadow: var(--shadow);
+}
+
+.card {
+  transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(24, 48, 36, .13);
+}
+
+.content-panel {
+  margin: 1.2rem 0;
+}
+
+.content-panel h2,
+.card h2,
+.card h3 {
+  margin-top: 0;
+}
+
+.content-panel p,
+.card p {
+  color: var(--muted);
+}
+
+/* ==========================================================
+   8. SKILLS PAGE
+   ========================================================== */
+.skill {
+  margin: 1.2rem 0;
+}
+
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.skill-track {
+  height: 10px;
+  border-radius: 20px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.skill-fill {
+  width: var(--level);
+  height: 100%;
+  background: var(--primary);
+  border-radius: inherit;
+}
+
+/* ==========================================================
+   9. PROJECTS PAGE: FILTER
+   ========================================================== */
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin: 1.2rem 0;
+}
+
+.filter-button.active,
+.filter-button:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.project-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin: .8rem 0;
+}
+
+.project-card {
+  min-width: 0; /* stops a big image from stretching the card */
+}
+
+/* ==========================================================
+   CONTACT PAGE
+   ========================================================== */
+.contact-intro {
+  max-width: 55ch;
+  margin: .6rem 0 1.8rem;
+  opacity: .85;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(128, 128, 128, .25);
+  border-radius: 14px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+}
+
+.contact-card-static:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: rgba(128, 128, 128, .25);
+}
+
+.contact-icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: .6rem;
+  border-radius: 12px;
+  background: var(--primary);
+  color: white;
+}
+
+.contact-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-label {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .65;
+}
+
+.contact-value {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+   11. FOOTER
+   ========================================================== */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+  padding: 1.2rem 6%;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.site-footer p {
+  margin: .2rem 0;
+}
+
+/* ==========================================================
+   12. DARK MODE (toggled by JS adding .dark-mode to <body>)
+   ========================================================== */
+body.dark-mode {
+  --bg: #111a16;
+  --surface: #1b2821;
+  --text: #edf4ef;
+  --muted: #b5c4ba;
+  --primary: #8bc5a2;
+  --primary-dark: #a8d9bb;
+  --border: #34473b;
+  --shadow: 0 12px 30px rgba(0, 0, 0, .18);
+}
+
+body.dark-mode .profile-placeholder {
+  background: #263b2e;
+  border-color: #587762;
+  color: #d8eee0;
+}
+
+/* ==========================================================
+   13. RESPONSIVE (media queries must stay at the bottom)
+   ========================================================== */
+
+/* Small screens: hamburger menu */
+@media (max-width: 450px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .navigation {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: .8rem 0;
+  }
+
+  .navigation.open {
+    display: flex;
+  }
+
+  .navigation a,
+  .theme-button {
+    padding: .45rem;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-block: 3rem;
+  }
+
+  .profile-placeholder {
+    min-height: 220px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);   /* overridden by the 480px rule below */
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .site-footer {
+    flex-direction: column;
+  }
+}
